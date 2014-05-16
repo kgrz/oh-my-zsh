@@ -33,7 +33,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable hg bzr git
 zstyle ':vcs_info:*:*' unstagedstr '!'
 zstyle ':vcs_info:*:*' stagedstr '+'
-zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%%u%c"
+zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" "𝌎 %b" "%%u%c"
 zstyle ':vcs_info:*:*' actionformats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%u%c (%a)"
 zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 
@@ -49,7 +49,7 @@ git_dirty() {
 # Display information about the current repository
 #
 repo_information() {
-    echo "%F{blue}${vcs_info_msg_0_%%/.} %F{8}$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_%f"
+    echo "%F{blue}${vcs_info_msg_0_%%/.} %F{4}$vcs_info_msg_1_`git_dirty` $vcs_info_msg_2_%f"
 }
 
 # Displays the exec time of the last command if set threshold was exceeded
@@ -71,12 +71,12 @@ preexec() {
 #
 precmd() {
     vcs_info # Get version control info before we start outputting stuff
-    print -P "\n$(repo_information) 💣  %F{red}$(chruby_prompt_info)  %F{yellow}$(cmd_exec_time)%f"
+    print -P "\n$(repo_information) 🔥  %F{red}$(chruby_prompt_info)  %F{yellow}$(cmd_exec_time)%f"
 }
 
 # Define prompts
 #
-PROMPT="%(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
+PROMPT="%F{2}[ %? ] %(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
 RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
 
 # ------------------------------------------------------------------------------
