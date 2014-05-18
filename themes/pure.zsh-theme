@@ -33,7 +33,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable hg bzr git
 zstyle ':vcs_info:*:*' unstagedstr '!'
 zstyle ':vcs_info:*:*' stagedstr '+'
-zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" "𝌎 %b" "%%u%c"
+zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" " ⭠ %b" "%%u%c"
 zstyle ':vcs_info:*:*' actionformats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%u%c (%a)"
 zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 
@@ -76,7 +76,7 @@ precmd() {
 
 # Define prompts
 #
-PROMPT="%F{2}[ %? ] %(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
+PROMPT="%F{magenta}« %F{2}%? %F{magenta}» %(?.%F{2}.%F{red})❯%f " # Display a red prompt char on failure
 RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
 
 # ------------------------------------------------------------------------------
