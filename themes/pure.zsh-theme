@@ -33,7 +33,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable hg bzr git
 zstyle ':vcs_info:*:*' unstagedstr '!'
 zstyle ':vcs_info:*:*' stagedstr '+'
-zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" " ⭠ %b" "%%u%c"
+zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" " ⭠%b" "%%u%c"
 zstyle ':vcs_info:*:*' actionformats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%u%c (%a)"
 zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 
@@ -71,7 +71,7 @@ preexec() {
 #
 precmd() {
     vcs_info # Get version control info before we start outputting stuff
-    print -P "\n$(repo_information) 🔥  %F{red}$(chruby_prompt_info)  %F{yellow}$(cmd_exec_time)%f"
+    print -P "\n$(repo_information) 💎  %F{red}$(chruby_prompt_info)  %F{yellow}$(cmd_exec_time)%f"
 }
 
 # Define prompts
