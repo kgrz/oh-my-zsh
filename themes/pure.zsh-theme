@@ -33,8 +33,8 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable hg bzr git
 zstyle ':vcs_info:*:*' unstagedstr '!'
 zstyle ':vcs_info:*:*' stagedstr '+'
-zstyle ':vcs_info:*:*' formats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%%u%c"
-zstyle ':vcs_info:*:*' actionformats "$FX[bold]%r$FX[no-bold]/%S" "%s/%b" "%u%c (%a)"
+zstyle ':vcs_info:*:*' formats "$FX[bold]%~$FX[no-bold]/%S" " %s/%b" "%%u%c"
+zstyle ':vcs_info:*:*' actionformats "$FX[bold]%r$FX[no-bold]/%~" "%s/%b" "%u%c (%a)"
 zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 
 # Fastest possible way to check if repo is dirty
@@ -74,9 +74,13 @@ precmd() {
     print -P "\n$(repo_information) %F{yellow}$(cmd_exec_time)%f"
 }
 
+function battery_charge {
+    echo `$BAT_CHARGE` 2>/dev/null
+}
+
 # Define prompts
 #
-RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
+RPROMPT='$(battery_charge)'    # Display username if connected via SSH
 PROMPT="%(?.%F{magenta}.%F{red})%? ❯%f " # Display a red prompt char on failure
 
 # ------------------------------------------------------------------------------
