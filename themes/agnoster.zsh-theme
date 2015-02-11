@@ -166,14 +166,17 @@ prompt_status() {
 
 ## Main prompt
 build_prompt() {
-  RETVAL=$?
+  #RETVAL=$?
   prompt_status
   prompt_virtualenv
-  prompt_context
-  prompt_dir
+  #prompt_context
   prompt_git
-  prompt_hg
+  prompt_dir
+  #prompt_hg
   prompt_end
 }
-
-PROMPT='%{%f%b%k%}$(build_prompt) '
+precmd() {
+  print -P '%{%f%b%k%}$(build_prompt) '
+}
+# PROMPT='%{%f%b%k%}$(build_prompt) '
+PROMPT="%(?.%F{magenta}.%F{red})%? ❯%f " # Display a red prompt char on failure
