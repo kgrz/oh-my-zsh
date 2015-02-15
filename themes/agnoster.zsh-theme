@@ -164,6 +164,10 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+battery_charge() {
+    echo `$BAT_CHARGE` 2>/dev/null
+}
+
 ## Main prompt
 build_prompt() {
   #RETVAL=$?
@@ -180,3 +184,4 @@ precmd() {
 }
 # PROMPT='%{%f%b%k%}$(build_prompt) '
 PROMPT="%(?.%F{magenta}.%F{red})%? ❯%f " # Display a red prompt char on failure
+RPROMPT='$(battery_charge)'
