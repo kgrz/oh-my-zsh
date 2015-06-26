@@ -26,7 +26,7 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR=''
+SEGMENT_SEPARATOR=''
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -98,7 +98,7 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}"
+    echo -n "${ref/refs\/heads\//⑂ }${vcs_info_msg_0_%% }${mode}"
   fi
 }
 
@@ -183,5 +183,5 @@ precmd() {
   print -P '%{%f%b%k%}$(build_prompt) '
 }
 # PROMPT='%{%f%b%k%}$(build_prompt) '
-PROMPT="%(?.%F{magenta}.%F{red})%? ❯%f " # Display a red prompt char on failure
+PROMPT="%(?.%F{magenta}.%F{red})%? 💥  ❯%f " # Display a red prompt char on failure
 RPROMPT='$(battery_charge)'
