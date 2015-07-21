@@ -184,4 +184,4 @@ precmd() {
 }
 # PROMPT='%{%f%b%k%}$(build_prompt) '
 PROMPT="%(?.%F{magenta}.%F{red})%? 💥  ❯%f " # Display a red prompt char on failure
-RPROMPT='$(battery_charge)'
+#RPROMPT='$(battery_charge)'

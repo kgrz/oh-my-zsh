@@ -60,9 +60,9 @@ bundle_install() {
       else
         local cores_num="$(nproc)"
       fi
-      bundle install --jobs=$cores_num $@ --vendor
+      bundle install --jobs=$cores_num $@ --path=vendor
     else
-      bundle install $@ --vendor
+      bundle install $@ --path=vendor
     fi
   else
     echo "Can't 'bundle install' outside a bundled project"
