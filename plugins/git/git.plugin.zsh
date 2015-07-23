@@ -39,3 +39,5 @@ function work_in_progress() {
     echo "WIP!!"
   fi
 }
+
+compdef g=git
