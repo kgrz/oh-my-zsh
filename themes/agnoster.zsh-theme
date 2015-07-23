@@ -26,7 +26,11 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR=''
+if [[ `uname` == 'Darwin' ]]; then
+    SEGMENT_SEPARATOR='\ue0b0'
+else
+    SEGMENT_SEPARATOR=''
+fi
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -126,7 +130,7 @@ prompt_hg() {
       if `hg st | grep -q "^\?"`; then
         prompt_segment red black
         st='±'
-      elif `hg st | grep -q "^(M|A)"`; then
+      elif `hg st | grep -q "^[MA]"`; then
         prompt_segment yellow black
         st='±'
       else
